@@ -3,6 +3,19 @@ Tech Fest 2023 - AuroVerse
 ## Description
 This is the official repository for the AuroVerse Tech Fest 2023. This repository contains the source code for the website, the documentation, and the source code for the AuroVerse Web App.
 
+## Start Developing
+1. Clone the repository
+2. Install dependencies
+```bash
+yarn install
+```
+3. Start the development server
+```bash
+yarn dev
+```
+4. Open [http://127.0.0.1:5173](http://127.0.0.1:5173) with your browser to see the result.
+
+
 ## Table of Contents
 - [Description](#description)
 - [Table of Contents](#table-of-contents)
