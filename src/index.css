@@ -225,3 +225,169 @@ button:hover {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
+
+/* Add media queries for tablet and mobile screen sizes */
+@media screen and (max-width: 1024px) {
+  .section1 {
+    padding: 4% 0 0 10%;
+  }
+
+  .section2 {
+    padding-top: 5%;
+    padding-left: 40%;
+  }
+
+  .section3 {
+    padding-left: 10%;
+    padding-top: 5%;
+  }
+
+  .section4 {
+    padding-top: 30%;
+  }
+
+  .section5 {
+    padding-top: 5%;
+    padding-left: 15%;
+  }
+
+  .hero-header, .section2 h1, .section3 h1, .section5 h1 {
+    font-size: 6.5rem;
+    line-height: 5.5rem;
+  }
+
+  .section1 h2 {
+    font-size: 3.5rem;
+  }
+
+  .section2-content {
+    width: 400px;
+  }
+
+  .section3-content {
+    width: 80%;
+  }
+
+  .section5-content {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .section1 {
+    padding: 4% 0 0 5%;
+  }
+
+  .section2 {
+    padding-top: 5%;
+    padding-left: 25%;
+  }
+
+  .section3 {
+    padding-left: 5%;
+    padding-top: 5%;
+  }
+
+  .section4 {
+    padding-top: 20%;
+  }
+
+  .section5 {
+    padding-top: 5%;
+    padding-left: 5%;
+  }
+
+  .hero-header, .section2 h1, .section3 h1, .section5 h1 {
+    font-size: 4.5rem;
+    line-height: 3.5rem;
+  }
+
+  .section1 h2 {
+    font-size: 2.5rem;
+  }
+
+  .section2-content {
+    width: 300px;
+  }
+
+  .section3-content {
+    width: 95%;
+  }
+
+  .section5-content {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section1 {
+    padding: 7% 0 0 10%;
+  }
+
+  .section2 {
+    padding-top: 5%;
+    padding-left: 10%;
+  }
+
+  .section3 {
+    padding-left: 5%;
+    padding-top: 15%;
+  }
+
+  .section4 {
+    padding-top: 165%;
+  }
+  .section4 .arrow{
+    margin-left: -10rem;
+    padding-bottom: 6vh;
+  }
+
+  .section5 {
+    padding-top: 30%;
+    padding-left: 9%;
+    /* width: 70%; */
+  }
+
+  .hero-header, .section2 h1, .section3 h1, .section5 h1 {
+    padding-left: 5%;
+    font-size: 5.2rem;
+    line-height: 4.5rem;
+    width: 80%;
+    text-align: center;
+  }
+  .hero-header{
+    padding-top: 75%;
+  }
+  .scroll-text{
+    padding-top: 80vh;
+    padding-left: 6%;
+    position: absolute !important;
+    /* justify-items: center; */
+  }
+  .arrow{
+    padding-left: 35%;
+    padding-bottom: 6vh;
+  }
+
+  .section1 h2 {
+    font-size: 2rem;
+  }
+
+  .section2-content {
+    padding-top: 70%;
+    text-align: justify;
+    width: 90%;
+  }
+
+  .section3-content {
+    padding-top: 65%;
+    padding-left: 7%;
+    width: 90%;
+  }
+
+  .section5-content {
+    width: 90%;
+    padding: 2%;
+    text-align: justify ;
+  }
+}

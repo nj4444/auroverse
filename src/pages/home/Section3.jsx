@@ -32,6 +32,8 @@ function Section3() {
       }
     }
   }
+  const isMobile = window.innerWidth <= 480;
+
 
   return (
     <div ref={ref} style={{ height: '100vh' ,scrollSnapAlign: 'start', position: 'relative' }}>
@@ -73,7 +75,7 @@ function Section3() {
         </div>
         </div>
         
-        <div className="scroll-text" style={{ position: 'relative',marginTop:'5rem' }}>
+        <div className="scroll-text" style={{ position: 'relative',marginTop:'5rem', visibility: isMobile? 'hidden': 'visible' }}>
           <p style={{ position: 'relative', fontStyle: 'italic', textAlign: 'center', marginBottom: -40 }}>Scroll down for more</p>
           <motion.div
             className="fill"
