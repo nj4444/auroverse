@@ -16,7 +16,7 @@ function App() {
         <Canvas>
           <Environment
             background
-            // files='./src/assets/dark_bg.hdr'
+            files='/assets/dark_bg.hdr'
             blur={0.35}
           />
           <ScrollControls pages={5} damping={0.1}>

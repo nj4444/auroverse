@@ -70,10 +70,10 @@ export default function Model(props) {
 
   const { nodes, materials, animations } = useGLTF('/models/tech.gltf')
   const { actions } = useAnimations(animations, meshRef)
-  const ManTexture = useEnvironment({ files: './src/assets/texture.hdr' })
+  const ManTexture = useEnvironment({ files: '/assets/texture.hdr' })
   // const envMap1 = useEnvironment({ files: './src/assets/lights4.hdr' })
-  const sTexture1 = "./src/assets/screen1.mp4"
-  const sTexture2 = "./src/assets/screen2.mp4"
+  const sTexture1 = "/assets/screen1.mp4"
+  const sTexture2 = "/assets/screen2.mp4"
 
   const { camera } = useThree()
   camera.fov = 28
