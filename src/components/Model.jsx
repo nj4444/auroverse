@@ -14,44 +14,48 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useControls } from "leva";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import EventPage from "../pages/screens/EventPage";
+import TeamPage from "../pages/screens/TeamPage";
+import GuidePage from "../pages/screens/GuidePage";
+import CollabPage from "../pages/screens/CollabPage";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function useSnapScroll(timeline, snapPoints) {
-  const [scroll, setScroll] = useState({ progress: 0, offset: 0 });
+// function useSnapScroll(timeline, snapPoints) {
+//   const [scroll, setScroll] = useState({ progress: 0, offset: 0 });
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const docHeight = document.body.scrollHeight;
-      const maxScrollY = docHeight - windowHeight;
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const scrollY = window.scrollY;
+//       const windowHeight = window.innerHeight;
+//       const docHeight = document.body.scrollHeight;
+//       const maxScrollY = docHeight - windowHeight;
 
-      let progress = scrollY / maxScrollY;
+//       let progress = scrollY / maxScrollY;
 
-      // Snap to the nearest snap point
-      const nearestSnapPoint = snapPoints.reduce((a, b) => {
-        return Math.abs(b - progress) < Math.abs(a - progress) ? b : a;
-      });
+//       // Snap to the nearest snap point
+//       const nearestSnapPoint = snapPoints.reduce((a, b) => {
+//         return Math.abs(b - progress) < Math.abs(a - progress) ? b : a;
+//       });
 
-      // Check if the scroll progress is close enough to the nearest snap point
-      if (Math.abs(progress - nearestSnapPoint) < 0.05) {
-        progress = nearestSnapPoint;
-        window.scrollTo({ top: progress * maxScrollY, behavior: "smooth" });
-      }
+//       // Check if the scroll progress is close enough to the nearest snap point
+//       if (Math.abs(progress - nearestSnapPoint) < 0.05) {
+//         progress = nearestSnapPoint;
+//         window.scrollTo({ top: progress * maxScrollY, behavior: "smooth" });
+//       }
 
-      setScroll({ progress, offset: progress * timeline.duration() });
-    };
+//       setScroll({ progress, offset: progress * timeline.duration() });
+//     };
 
-    window.addEventListener("scroll", handleScroll);
+//     window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [timeline, snapPoints]);
+//     return () => {
+//       window.removeEventListener("scroll", handleScroll);
+//     };
+//   }, [timeline, snapPoints]);
 
-  return scroll;
-}
+//   return scroll;
+// }
 
 export default function Model(props) {
   const meshRef = useRef();
@@ -75,12 +79,12 @@ export default function Model(props) {
   const tl = useRef();
   // const scroll = useSnapScroll(tl.current, [0, 0,8, 8, 12]);
 
-  const { nodes, materials, animations } = useGLTF("/models/tech.gltf");
+  const { nodes, materials, animations } = useGLTF("/models/model.glb");
   const { actions } = useAnimations(animations, meshRef);
   const ManTexture = useEnvironment({ files: "/assets/texture.hdr" });
   // const envMap1 = useEnvironment({ files: './src/assets/lights4.hdr' })
-  const sTexture1 = "/assets/screen1.mp4";
-  const sTexture2 = "/assets/screen2.mp4";
+  const sTexture1 = "/assets/screen3.mp4";
+  const sTexture2 = "/assets/screen4.mp4";
 
   const { camera } = useThree();
   camera.fov = 28;
@@ -104,7 +108,7 @@ export default function Model(props) {
 
   useLayoutEffect(() => {
     tl.current = gsap.timeline({
-      defaults: { duration: 0.2, ease: "spring " },
+      defaults: { duration: 0.2, ease: "easeIn " },
       paused: true,
     });
 
@@ -155,8 +159,8 @@ export default function Model(props) {
         .to(meshRef.current.scale, { x: 2.1, y: 2.1, z: 2.1 }, 0.5)
         .to(myref.current.rotation, { x: 1, z: 1, y: -1.6 }, 0.5)
 
-        .to(manRef.current.scale, { x: 0, y: 0, z: 0 }, 0.5)
-        .to(manRef.current.position, { x: 0, y: -120, z: -200 }, 0.5)
+        // .to(manRef.current.scale, { x: -1, y: -1, z: -1 }, 0.5)
+        // .to(manRef.current.position, { x: 0, y: -120, z: -200 }, 0.5)
 
         .to(meshRef.current.rotation, { x: 1.4, y: 0.34, z: -0.9 }, 0.75)
         .to(meshRef.current.position, { y: 2.8 }, 0.75)
@@ -203,7 +207,7 @@ export default function Model(props) {
           <mesh
             name="Screen1"
             ref={screen1}
-            // onClick={() => openPage('EventPage')}
+            onClick={() => openPage('EventPage')}
             onPointerOver={(e) => {
               e.object.scale.set(1.64, 0.75, 0.96);
             }}
@@ -222,7 +226,7 @@ export default function Model(props) {
             name="Screen3"
             ref={screen3}
             opac
-            // onClick={() => openPage('TeamPage')}
+            onClick={() => openPage('TeamPage')}
             onPointerOver={(e) => e.object.scale.set(1.64, 0.75, 0.96)}
             onPointerOut={(e) => e.object.scale.set(1.54, 0.65, 0.85)}
             geometry={nodes.Screen3.geometry}
@@ -236,7 +240,7 @@ export default function Model(props) {
           <mesh
             name="Screen2"
             ref={screen2}
-            // onClick={() => openPage('GuidePage')}
+            onClick={() => openPage('GuidePage')}
             onPointerOver={(e) => e.object.scale.set(1.64, 0.75, 0.96)}
             onPointerOut={(e) => e.object.scale.set(1.54, 0.65, 0.85)}
             geometry={nodes.Screen2.geometry}
@@ -250,7 +254,7 @@ export default function Model(props) {
           <mesh
             name="Screen4"
             ref={screen4}
-            // onClick={() => openPage('CollabPage')}
+            onClick={() => openPage('CollabPage')}
             onPointerOver={(e) => e.object.scale.set(1.64, 0.75, 0.96)}
             onPointerOut={(e) => e.object.scale.set(1.54, 0.65, 0.85)}
             geometry={nodes.Screen4.geometry}
@@ -324,10 +328,10 @@ export default function Model(props) {
             pointerEvents: "none",
           }}
         >
-          {/* {currentPage === 'EventPage' && <EventPage isOpen={true} togglePopup={closePage} />}
+          {currentPage === 'EventPage' && <EventPage isOpen={true} togglePopup={closePage} />}
           {currentPage === 'TeamPage' && <TeamPage isOpen={true} togglePopup={closePage} />}
           {currentPage === 'GuidePage' && <GuidePage isOpen={true} togglePopup={closePage} />}
-          {currentPage === 'CollabPage' && <CollabPage isOpen={true} togglePopup={closePage} />} */}
+          {currentPage === 'CollabPage' && <CollabPage isOpen={true} togglePopup={closePage} />}
         </div>
       </Html>
     </group>
@@ -339,4 +343,4 @@ function VideoMaterial({ url }) {
   return <meshBasicMaterial map={texture} transparent toneMapped={true} />;
 }
 
-useGLTF.preload("/models/tech.gltf");
+useGLTF.preload("/models/model.glb");
